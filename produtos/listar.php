@@ -32,8 +32,8 @@ $listaDeProdutos = lerProdutos($conexao);
         <li><b>Descrição:</b> <?=$produto['descricao']?>  </li>
         <li><b>Fabricante:</b> <?=$produto['fabricante']?> </li>
     </ul>
-    <a href="atualizar.php?id=<?=$produto["id"]?>">Atualizar</a>
-    <a href="excluir.php?id=<?=$produto["id"]?>">Excluir</a>
+    <a href="atualizar.php?id=<?=$produto['id']?>">Atualizar</a>
+    <a href="excluir.php?id=<?=$produto['id']?>">Excluir</a>
 <?php } ?>
 
 </div>
