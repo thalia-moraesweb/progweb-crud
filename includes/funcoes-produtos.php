@@ -21,11 +21,7 @@ function lerProdutos($conexao){
     }
     
     return $produtos;
-
 }
-
-
-
 
 function inserirProduto($conexao, $nome, $preco, $quantidade,
                          $descricao, $fabricanteId){
@@ -34,8 +30,6 @@ function inserirProduto($conexao, $nome, $preco, $quantidade,
 
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
-
-
 
 
 function lerUmProduto($conexao, $id) {
@@ -50,10 +44,12 @@ function lerUmProduto($conexao, $id) {
                  return mysqli_fetch_assoc($resultado);
 }
 
+function atualizarProduto($conexao, $id, $nome, $preco, $quantidade, $descricao, $fabId){
 
-
-function atualizarProduto($conexao, $id,$nome){
- $sql = "UPDATE fabricantes SET nome = '$nome' WHERE id = $id"; 
+ $sql = "UPDATE produtos SET nome = '$nome', preco = $preco, 
+ quantidade = $quantidade, descricao= '$descricao' , 
+ fabricante_id = $fabId 
+ WHERE id = $id"; 
 mysqli_query($conexao, $sql) or die(mysqli_error($conexao));        
                 
 }
@@ -62,4 +58,9 @@ function excluirProduto ($conexao, $id){
     $sql = "DELETE FROM produtos WHERE id = $id";
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));  
 
+}
+
+function formataMoeda($valor){
+    return "R$ ".number_format($valor, 2, ",", ".");
+    //5000.00 ->  R$ 5.000,00
 }
